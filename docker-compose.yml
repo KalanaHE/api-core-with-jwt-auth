@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "4700:4700"
+    environment:
+      - DB_HOST=localhost
+      - DB_USER=root
+      - DB_PASSWORD=
+      - DB_NAME=cepec_tg_db
+      - DB_PORT=3306
+    stdin_open: true
+    tty: true

@@ -1,0 +1,66 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows", "linux-musl"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DB_CONNECTION_STRING")
+}
+
+model user {
+  id          Int       @id @default(autoincrement())
+  firstName   String    @db.VarChar(200)
+  lastName    String    @db.VarChar(200)
+  email       String    @unique @db.VarChar(200)
+  password    String    @db.VarChar(200)
+  mobile      String    @unique @db.VarChar(200)
+  gender      GENDER?
+  dateOfBirth DateTime? @db.DateTime(6)
+  role        role      @relation(fields: [roleId], references: [id])
+  roleId      Int       @db.Int
+  status      STATUS    @default(ACTIVE)
+  createdAt   DateTime  @default(now()) @db.DateTime(6)
+}
+
+model role {
+  id                Int          @id @default(autoincrement())
+  name              String       @unique @db.VarChar(200)
+  description       String?      @db.VarChar(200)
+  createdAt         DateTime     @default(now()) @db.DateTime(6)
+  user              user[]
+  permission        permission[]
+}
+
+model permission {
+  id          Int      @id @default(autoincrement())
+  role        role     @relation(fields: [roleId], references: [id])
+  roleId      Int      @db.Int
+  name        String   @unique @db.VarChar(200)
+  description String?  @db.VarChar(200)
+  createdAt   DateTime @default(now()) @db.DateTime(6)
+}
+
+model country {
+  id           Int    @id @default(autoincrement())
+  countryCode  String @unique @db.VarChar(5)
+  countryName  String @unique @db.VarChar(50)
+  diallingNode String @unique @db.VarChar(5)
+}
+
+enum GENDER {
+  MALE
+  FEMALE
+}
+
+enum STATUS {
+  ACTIVE
+  INACTIVE
+}
+
+enum USER_TYPE {
+  GUEST
+  ADMIN
+  RESIDENT_PORTAL
+  BUSINESS_PORTAL
+}

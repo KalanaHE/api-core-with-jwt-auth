@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "bae6e5a8-ace2-41a6-a33f-1ccddacc6dfd",
+		"name": "MYPORTAL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "FIND USER BY ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU4MDA2ODQ5LCJleHAiOjE2NTgwOTMyNDl9.qZ7yCIlirmyOQDWFWg0Vfk11_koxqzl_WiIk5cJSREE",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "localhost:4700/api/v1/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "4700",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SIGNUP",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"kalana\",\r\n    \"lastName\": \"Hettiarachchi\",\r\n    \"email\": \"kalana@test.com\",\r\n    \"password\": \"helloworld\",\r\n    \"mobile\": \"07189012241\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4700/api/v1/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "4700",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SIGNIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"kalana@test.com\",\r\n    \"password\": \"helloworld\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:4700/api/v1/auth/signin",
+					"host": [
+						"localhost"
+					],
+					"port": "4700",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
