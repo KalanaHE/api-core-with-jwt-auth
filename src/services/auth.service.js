@@ -13,9 +13,31 @@ class AuthService {
         try {
             const { password: _password, ...userData } = data;
             const password = bcrypt.hashSync(_password, parseInt(process.env.SALT_ROUNDS));
-            const createdUser = await this.userRepository.create({ ...userData, password, roleId: 1 });
+            const createdUser = await this.userRepository.create({ password, roleId: 1, ...userData });
 
-            return response(httpStatus.OK, 'User created successfully', createdUser);
+            //auto login flow after signup
+            const user = await this.userRepository.findUnique({
+                where: { email: userData.email },
+                include: {
+                    role: {
+                        select: { name: true, permission: { select: { name: true } } },
+                    },
+                },
+            });
+            if (user) {
+                const token = jwt.sign({ id: createdUser.id }, process.env.JWT_SECRET, {
+                    expiresIn: parseInt(process.env.JWT_LIFESPAN), // 86400 = 24 hours
+                });
+
+                const { role, password: _password, ..._user } = user;
+
+                const { name: userRole, permission: _permission } = role;
+                const permissions = _permission.map(({ name }) => name);
+
+                return response(httpStatus.OK, 'User signed up successfully', { ..._user, userRole, permissions, token });
+            }
+
+            return response(httpStatus.INTERNAL_SERVER_ERROR, null, null, null);
         } catch (error) {
             return response(httpStatus.INTERNAL_SERVER_ERROR, error.message, null, error);
         }
