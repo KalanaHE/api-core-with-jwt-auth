@@ -13,7 +13,7 @@ class AuthService {
         try {
             const { password: _password, ...userData } = data;
             const password = bcrypt.hashSync(_password, parseInt(process.env.SALT_ROUNDS));
-            const createdUser = await this.userRepository.create({ password, roleId: 1, ...userData });
+            const createdUser = await this.userRepository.create({ password, roleId: 1, ...userData });  //roleId: 1 is for general user
 
             //auto login flow after signup
             const user = await this.userRepository.findUnique({
