@@ -7,7 +7,8 @@ const prisma = new PrismaClient({
 });
 
 const verifyAuthToken = async (req, res, next) => {
-    const _token = req.headers['x-access-token'];
+
+    const _token = req.headers['authorization'];
 
     if (!_token) {
         return res.status(httpStatus.FORBIDDEN).send({

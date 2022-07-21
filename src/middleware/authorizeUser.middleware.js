@@ -7,7 +7,7 @@ const prisma = new PrismaClient({
 });
 
 const authorizeUser = (requiredRoles) => async (req, res, next) => {
-    const _token = req.headers['x-access-token'];
+    const _token = req.headers['authorization'];
 
     const token = _token.replace('Bearer ', '');
 
