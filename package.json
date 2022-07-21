@@ -17,7 +17,7 @@
   "dependencies": {
     "@hapi/boom": "^9.1.2",
     "@hapi/joi": "^17.1.1",
-    "@prisma/client": "^3.11.1",
+    "@prisma/client": "^4.1.0",
     "axios": "^0.26.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
@@ -40,14 +40,13 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "nodemailer": "^6.7.7",
-    "prisma": "^3.11.1",
     "querystring": "^0.2.1",
     "require-all": "^3.0.0",
     "winston": "^3.6.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",
-    "prisma": "^4.0.0"
+    "prisma": "^4.1.0"
   },
   "keywords": [],
   "description": ""

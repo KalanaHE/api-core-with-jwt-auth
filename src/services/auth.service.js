@@ -26,7 +26,7 @@ class AuthService {
             });
             if (user) {
                 const token = jwt.sign({ id: createdUser.id }, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_LIFESPAN, // 86400 = 24 hours
+                    expiresIn: process.env.JWT_LIFESPAN, // 1min = 60 seconds
                 });
 
                 const { role, password: _password, ..._user } = user;
@@ -63,7 +63,7 @@ class AuthService {
             }
 
             const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-                expiresIn: process.env.JWT_LIFESPAN, // 86400 = 24 hours
+                expiresIn: process.env.JWT_LIFESPAN, // 1min = 60 seconds
             });
 
             const { role, password: _password, ..._user } = user;
