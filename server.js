@@ -25,20 +25,20 @@ app.use(helmet());
 app.use(hpp());
 app.use(rateLimit(limiterOptions));
 
-app.use(
-    cors({
-        origin(origin, callback) {
-            if (!origin) return callback(null, true);
-            if (["frabjous-cassata-ba205e.netlify.app"].indexOf(origin) === -1) {
-                const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-                return callback(new Error(msg), false);
-            }
-            return callback(null, true);
-        },
-        credentials: true,
-        exposedHeaders: ['x-access-token'],
-    })
-);
+// app.use(
+//     cors({
+//         origin(origin, callback) {
+//             if (!origin) return callback(null, true);
+//             if (["frabjous-cassata-ba205e.netlify.app"].indexOf(origin) === -1) {
+//                 const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+//                 return callback(new Error(msg), false);
+//             }
+//             return callback(null, true);
+//         },
+//         credentials: true,
+//         exposedHeaders: ['x-access-token'],
+//     })
+// );
 
 app.use(cors({ origin: '*' }));
 
