@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "roleId": 1,
+        "name": "VIEW_GENERAL_USER_HOME",
+        "description": "View general user home"
+    },
+    {
+        "id": 2,
+        "roleId": 1,
+        "name": "VIEW_GENERAL_USER_PAGE_ONE",
+        "description": "View general user page one"
+    },
+    {
+        "id": 3,
+        "roleId": 1,
+        "name": "VIEW_GENERAL_USER_PAGE_TWO",
+        "description": "View general user page two"
+    },
+    {
+        "id": 4,
+        "roleId": 2,
+        "name": "VIEW_ADMIN_USER_HOME",
+        "description": "View admin user home"
+    },
+    {
+        "id": 5,
+        "roleId": 2,
+        "name": "VIEW_ADMIN_USER_PAGE_ONE",
+        "description": "View admin user page one"
+    },
+    {
+        "id": 6,
+        "roleId": 2,
+        "name": "VIEW_ADMIN_USER_PAGE_TWO",
+        "description": "View admin user page two"
+    }
+]
